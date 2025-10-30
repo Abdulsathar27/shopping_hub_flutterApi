@@ -4,11 +4,11 @@ import '../utils/app_exceptions.dart';
 import '../utils/logger.dart';
 
 class DioClient {
-  final Dio _dio;
+  final Dio dio;
 
-  Dio get dio => _dio;
+  Dio get dios => dio;
 
-  DioClient._internal(this._dio);
+  DioClient._internal(this.dio);
 
   factory DioClient() {
     final dio = Dio(

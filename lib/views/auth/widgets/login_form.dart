@@ -15,23 +15,23 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     /// 🔥 Auto-clear inputs whenever login screen is opened
-    _emailController.clear();
-    _passwordController.clear();
+    emailController.clear();
+    passwordController.clear();
   }
 
   Future<void> _login(BuildContext context) async {
     final auth = Provider.of<AuthProvider>(context, listen: false);
 
     final success = await auth.login(
-      _emailController.text.trim(),
-      _passwordController.text.trim(),
+      emailController.text.trim(),
+      passwordController.text.trim(),
     );
 
     if (!context.mounted) return;
@@ -69,7 +69,7 @@ class _LoginFormState extends State<LoginForm> {
     return Column(
       children: [
         TextField(
-          controller: _emailController,
+          controller: emailController,
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
             labelText: "Email",
@@ -80,7 +80,7 @@ class _LoginFormState extends State<LoginForm> {
         const SizedBox(height: Sizes.spacingLarge),
 
         TextField(
-          controller: _passwordController,
+          controller: passwordController,
           obscureText: true,
           decoration: InputDecoration(
             labelText: "Password",

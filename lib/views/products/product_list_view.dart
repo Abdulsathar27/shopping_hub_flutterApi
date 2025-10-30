@@ -10,10 +10,10 @@ class ProductListView extends StatefulWidget {
   const ProductListView({super.key});
 
   @override
-  State<ProductListView> createState() => _ProductListViewState();
+  State<ProductListView> createState() => ProductListViewState();
 }
 
-class _ProductListViewState extends State<ProductListView> {
+class ProductListViewState extends State<ProductListView> {
   @override
   void initState() {
     super.initState();

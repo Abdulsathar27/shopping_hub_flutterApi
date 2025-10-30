@@ -1,7 +1,7 @@
 import '../core/storage/local_storage_service.dart';
 
 class AuthService {
-  final LocalStorageService _localStorageService = LocalStorageService();
+  final LocalStorageService localStorageService = LocalStorageService();
 
   /// Simulated authentication logic (replace with real API later)
   Future<bool> login(String email, String password) async {
@@ -9,8 +9,8 @@ class AuthService {
     await Future.delayed(const Duration(milliseconds: 800));
 
     if (email.isNotEmpty && password.isNotEmpty) {
-      await _localStorageService.setLoginStatus(true);
-      await _localStorageService.setUserEmail(email);
+      await localStorageService.setLoginStatus(true);
+      await localStorageService.setUserEmail(email);
       return true;
     }
     return false;
@@ -18,16 +18,16 @@ class AuthService {
 
   /// Logout user and clear stored data
   Future<void> logout() async {
-    await _localStorageService.clearStorage();
+    await localStorageService.clearStorage();
   }
 
   /// Check if user already logged in
   Future<bool> isLoggedIn() async {
-    return await _localStorageService.getLoginStatus();
+    return await localStorageService.getLoginStatus();
   }
 
   /// Get stored logged-in user email
   Future<String?> getUserEmail() async {
-    return await _localStorageService.getUserEmail();
+    return await localStorageService.getUserEmail();
   }
 }

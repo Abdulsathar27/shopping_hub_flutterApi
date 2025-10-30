@@ -10,22 +10,22 @@ import 'register_button.dart';
 class RegisterForm extends StatelessWidget {
   const RegisterForm({super.key});
 
-  static final TextEditingController _nameController =
+  static final TextEditingController nameController =
       TextEditingController();
-  static final TextEditingController _emailController =
+  static final TextEditingController emailController =
       TextEditingController();
-  static final TextEditingController _passwordController =
+  static final TextEditingController passwordController =
       TextEditingController();
 
   Future<void> _register(BuildContext context) async {
     final auth = Provider.of<AuthProvider>(context, listen: false);
 
-    if (_emailController.text.isNotEmpty &&
-        _passwordController.text.isNotEmpty &&
-        _nameController.text.isNotEmpty) {
+    if (emailController.text.isNotEmpty &&
+        passwordController.text.isNotEmpty &&
+        nameController.text.isNotEmpty) {
       final success = await auth.login(
-        _emailController.text.trim(),
-        _passwordController.text.trim(),
+        emailController.text.trim(),
+        passwordController.text.trim(),
       );
       if (!context.mounted) return;
 
@@ -45,7 +45,7 @@ class RegisterForm extends StatelessWidget {
       children: [
         /// Name field
         TextField(
-          controller: _nameController,
+          controller: nameController,
           decoration: InputDecoration(
             labelText: "Name",
             prefixIcon: Icon(Icons.person, color: AppColors.textMedium),
@@ -56,7 +56,7 @@ class RegisterForm extends StatelessWidget {
 
         /// Email field
         TextField(
-          controller: _emailController,
+          controller: emailController,
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
             labelText: "Email",
@@ -68,7 +68,7 @@ class RegisterForm extends StatelessWidget {
 
         /// Password field
         TextField(
-          controller: _passwordController,
+          controller: passwordController,
           obscureText: true,
           decoration: InputDecoration(
             labelText: "Password",

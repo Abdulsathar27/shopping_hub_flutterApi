@@ -6,88 +6,88 @@ import '../core/network/api_endpoints.dart';
 import '../core/utils/logger.dart';
 
 class ProductProvider with ChangeNotifier {
-  final DioClient _dioClient = DioClient();
+  final DioClient dioClient = DioClient();
 
-  List<Product> _products = [];
-  bool _isLoading = false;
-  String? _errorMessage;
+  List<Product> products = [];
+  bool isLoading = false;
+  String? errorMessage;
 
-  List<Product> get products => _products;
-  bool get isLoading => _isLoading;
-  String? get errorMessage => _errorMessage;
+  List<Product> get product => products;
+  bool get isLoadings => isLoading;
+  String? get errorMessages => errorMessage;
 
   /// Fetch all products from FakeStore API
   Future<void> loadProducts() async {
-    _isLoading = true;
-    _errorMessage = null;
+    isLoading = true;
+    errorMessage = null;
     notifyListeners();
 
     try {
-      final response = await _dioClient.dio.get(ApiEndpoints.products);
+      final response = await dioClient.dio.get(ApiEndpoints.products);
       final List data = response.data;
 
-      _products = data.map((json) => Product.fromJson(json)).toList();
+      products = data.map((json) => Product.fromJson(json)).toList();
       AppLogger.success("Products loaded successfully");
     } on DioException catch (e) {
-      _errorMessage = _dioClient.handleError(e).toString();
-      AppLogger.error("Failed loading products", error: _errorMessage);
+      errorMessage = dioClient.handleError(e).toString();
+      AppLogger.error("Failed loading products", error: errorMessage);
     } catch (e) {
-      _errorMessage = "Unexpected error: $e";
+      errorMessage = "Unexpected error: $e";
       AppLogger.error("Unexpected failure", error: e);
     }
 
-    _isLoading = false;
+    isLoading = false;
     notifyListeners();
   }
 
   /// Add a new product (FakeStore allows mock POST)
   Future<void> addProduct(Product product) async {
     try {
-      final response = await _dioClient.dio.post(
+      final response = await dioClient.dio.post(
         ApiEndpoints.products,
         data: product.toJson(),
       );
 
       final addedProduct = Product.fromJson(response.data);
-      _products.add(addedProduct);
+      products.add(addedProduct);
 
       AppLogger.success("Product added successfully");
       notifyListeners();
     } on DioException catch (e) {
-      AppLogger.error("Add product failed", error: _dioClient.handleError(e));
+      AppLogger.error("Add product failed", error: dioClient.handleError(e));
     }
   }
 
   /// Update product by ID
   Future<void> updateProduct(int id, Product updatedProduct) async {
     try {
-      final response = await _dioClient.dio.put(
+      final response = await dioClient.dio.put(
         "${ApiEndpoints.productById}$id",
         data: updatedProduct.toJson(),
       );
 
       final updated = Product.fromJson(response.data);
-      final index = _products.indexWhere((p) => p.id == id);
+      final index = products.indexWhere((p) => p.id == id);
       if (index != -1) {
-        _products[index] = updated;
+        products[index] = updated;
         notifyListeners();
       }
 
       AppLogger.success("Product updated");
     } on DioException catch (e) {
-      AppLogger.error("Update failed", error: _dioClient.handleError(e));
+      AppLogger.error("Update failed", error: dioClient.handleError(e));
     }
   }
 
   /// Delete product by ID
   Future<void> deleteProduct(int id) async {
     try {
-      await _dioClient.dio.delete("${ApiEndpoints.productById}$id");
-      _products.removeWhere((p) => p.id == id);
+      await dioClient.dio.delete("${ApiEndpoints.productById}$id");
+      products.removeWhere((p) => p.id == id);
       notifyListeners();
       AppLogger.success("Product deleted");
     } on DioException catch (e) {
-      AppLogger.error("Delete failed", error: _dioClient.handleError(e));
+      AppLogger.error("Delete failed", error: dioClient.handleError(e));
     }
   }
 }

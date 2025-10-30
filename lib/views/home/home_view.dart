@@ -11,11 +11,11 @@ class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
   @override
-  State<HomeView> createState() => _HomeViewState();
+  State<HomeView> createState() => HomeViewState();
 }
 
-class _HomeViewState extends State<HomeView> {
-  int _currentIndex = 0;
+class HomeViewState extends State<HomeView> {
+  int currentIndex = 0;
 
   final List<Widget> screens = const [
     ProductListView(),
@@ -25,7 +25,7 @@ class _HomeViewState extends State<HomeView> {
   ];
 
   void onTabChanged(int index) {
-    setState(() => _currentIndex = index);
+    setState(() => currentIndex = index);
   }
 
   @override
@@ -41,7 +41,7 @@ class _HomeViewState extends State<HomeView> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text(
-          appTitles[_currentIndex],
+          appTitles[currentIndex],
           style: AppTextStyles.heading2.copyWith(color: Colors.white),
         ),
         backgroundColor: AppColors.primary,
@@ -49,11 +49,11 @@ class _HomeViewState extends State<HomeView> {
       ),
 
       /// ✅ Screen changes here
-      body: screens[_currentIndex],
+      body: screens[currentIndex],
 
       /// ✅ Custom widget handling bottom navigation
       bottomNavigationBar: HomeBottomNav(
-        currentIndex: _currentIndex,
+        currentIndex: currentIndex,
         onTabSelected: onTabChanged,
       ),
     );
