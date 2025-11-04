@@ -16,7 +16,7 @@ class ProductProvider with ChangeNotifier {
   bool get isLoadings => isLoading;
   String? get errorMessages => errorMessage;
 
-  /// Fetch all products from FakeStore API
+  
   Future<void> loadProducts() async {
     isLoading = true;
     errorMessage = null;
@@ -40,7 +40,7 @@ class ProductProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  /// Add a new product (FakeStore allows mock POST)
+  
   Future<void> addProduct(Product product) async {
     try {
       final response = await dioClient.dio.post(
@@ -58,7 +58,7 @@ class ProductProvider with ChangeNotifier {
     }
   }
 
-  /// Update product by ID
+  
   Future<void> updateProduct(int id, Product updatedProduct) async {
     try {
       final response = await dioClient.dio.put(
@@ -79,7 +79,7 @@ class ProductProvider with ChangeNotifier {
     }
   }
 
-  /// Delete product by ID
+  
   Future<void> deleteProduct(int id) async {
     try {
       await dioClient.dio.delete("${ApiEndpoints.productById}$id");

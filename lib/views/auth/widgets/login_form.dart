@@ -21,7 +21,6 @@ class _LoginFormState extends State<LoginForm> {
   @override
   void initState() {
     super.initState();
-    /// 🔥 Auto-clear inputs whenever login screen is opened
     emailController.clear();
     passwordController.clear();
   }

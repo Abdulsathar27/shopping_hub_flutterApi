@@ -36,7 +36,6 @@ class ProductCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            /// Image Section with Hero Animation
             Expanded(
               child: Hero(
                 tag: "product_image_${product.id}",

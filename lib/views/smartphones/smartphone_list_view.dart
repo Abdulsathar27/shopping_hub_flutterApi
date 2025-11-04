@@ -13,7 +13,7 @@ class SmartphoneListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<SmartphoneProvider>(
       builder: (context, provider, child) {
-        /// Auto Fetch Data if Empty and not loading
+        
         if (provider.smartphones.isEmpty && !provider.isLoading) {
           provider.loadSmartphones();
         }
@@ -31,7 +31,7 @@ class SmartphoneListView extends StatelessWidget {
           );
         }
 
-        /// Grid View of Smartphones
+      
         return GridView.builder(
           padding: const EdgeInsets.all(Sizes.paddingMedium),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

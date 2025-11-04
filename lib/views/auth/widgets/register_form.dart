@@ -43,7 +43,7 @@ class RegisterForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        /// Name field
+        
         TextField(
           controller: nameController,
           decoration: InputDecoration(
@@ -54,7 +54,7 @@ class RegisterForm extends StatelessWidget {
         ),
         const SizedBox(height: Sizes.spacingLarge),
 
-        /// Email field
+        
         TextField(
           controller: emailController,
           keyboardType: TextInputType.emailAddress,
@@ -66,7 +66,7 @@ class RegisterForm extends StatelessWidget {
         ),
         const SizedBox(height: Sizes.spacingLarge),
 
-        /// Password field
+        
         TextField(
           controller: passwordController,
           obscureText: true,

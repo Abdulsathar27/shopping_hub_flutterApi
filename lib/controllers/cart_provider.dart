@@ -8,7 +8,7 @@ class CartProvider with ChangeNotifier {
 
   int get itemCount => items.length;
 
-  /// Total cart price
+  
   double get totalPrice {
     double total = 0.0;
     items.forEach((key, item) {
@@ -17,7 +17,7 @@ class CartProvider with ChangeNotifier {
     return total;
   }
 
-  /// Add product to cart
+  
   void addToCart(Product product) {
     if (items.containsKey(product.id)) {
       items[product.id]!.quantity++;
@@ -30,13 +30,13 @@ class CartProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  /// Remove a product from cart completely
+ 
   void removeFromCart(int id) {
     items.remove(id);
     notifyListeners();
   }
 
-  /// Increase quantity
+  
   void increaseQuantity(int id) {
     if (items.containsKey(id)) {
       items[id]!.quantity++;
@@ -44,7 +44,7 @@ class CartProvider with ChangeNotifier {
     }
   }
 
-  /// Decrease quantity
+  
   void decreaseQuantity(int id) {
     if (!items.containsKey(id)) return;
 
@@ -56,14 +56,14 @@ class CartProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  /// Clear entire cart
+ 
   void clearCart() {
     items.clear();
     notifyListeners();
   }
 }
 
-/// Cart item model for cart state
+
 class CartItem {
   final Product product;
   int quantity;

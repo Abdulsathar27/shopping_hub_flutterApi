@@ -12,19 +12,19 @@ class AuthProvider with ChangeNotifier {
   String? get userEmails => userEmail;
   bool get isLoadings => isLoading;
 
-  /// Load saved auth state when app starts
+
   Future<void> checkLoginStatus() async {
     isLoggedIn = await localStorage.getLoginStatus();
     userEmail = await localStorage.getUserEmail();
     notifyListeners();
   }
 
-  /// Simulated login process
+ 
   Future<bool> login(String email, String password) async {
     isLoading = true;
     notifyListeners();
 
-    await Future.delayed(const Duration(seconds: 1)); // Fake API call time
+    await Future.delayed(const Duration(seconds: 1)); 
 
     if (email.isNotEmpty && password.isNotEmpty) {
       isLoggedIn = true;
@@ -43,7 +43,7 @@ class AuthProvider with ChangeNotifier {
     return false;
   }
 
-  /// Logout user and clear data
+  
   Future<void> logout() async {
     isLoggedIn = false;
     userEmail = null;

@@ -8,7 +8,7 @@ class DioClient {
 
   Dio get dios => dio;
 
-  DioClient._internal(this.dio);
+  DioClient.internal(this.dio);
 
   factory DioClient() {
     final dio = Dio(
@@ -40,10 +40,10 @@ class DioClient {
       ),
     );
 
-    return DioClient._internal(dio);
+    return DioClient.internal(dio);
   }
 
-  /// Handle API errors and convert to custom exceptions
+  
   Exception handleError(DioException e) {
     switch (e.type) {
       case DioExceptionType.connectionTimeout:

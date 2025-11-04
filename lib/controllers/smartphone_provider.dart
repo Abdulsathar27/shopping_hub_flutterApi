@@ -17,14 +17,14 @@ class SmartphoneProvider with ChangeNotifier {
   bool get isLoadings => isLoading;
   String? get errorMessages => errorMessage;
 
-  /// Fetch smartphone category from DummyJSON API
+
   Future<void> loadSmartphones() async {
     isLoading = true;
     errorMessage = null;
     notifyListeners();
 
     try {
-      /// Temporarily override base URL for DummyJSON
+      
       dioClient.dio.options.baseUrl = ApiConstants.baseDummyJson;
 
       final response =

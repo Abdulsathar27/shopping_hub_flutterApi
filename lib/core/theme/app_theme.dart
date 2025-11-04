@@ -3,7 +3,6 @@ import 'package:apiprojectecom/core/constants/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  /// Light theme configuration for the application
   static ThemeData lightTheme = ThemeData(
     useMaterial3: false,
     scaffoldBackgroundColor: AppColors.background,

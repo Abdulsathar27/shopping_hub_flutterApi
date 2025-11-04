@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
             title: "Shopping Hub",
             theme: AppTheme.lightTheme,
 
-            // ✅ Auth Guard: initial route based on login state
+           
             initialRoute: auth.isLoggedIn
                 ? RouteConstants.home
                 : RouteConstants.login,

@@ -36,7 +36,7 @@ class SmartphoneCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            /// Smartphone Image
+            
             Expanded(
               child: Hero(
                 tag: "product_image_${product.id}",
@@ -62,13 +62,13 @@ class SmartphoneCard extends StatelessWidget {
               ),
             ),
 
-            /// Smartphone Info
+            
             Padding(
               padding: const EdgeInsets.all(Sizes.paddingSmall),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  /// Smartphone Name
+                  
                   Text(
                     product.title,
                     maxLines: 2,
@@ -77,7 +77,7 @@ class SmartphoneCard extends StatelessWidget {
                   ),
                   const SizedBox(height: Sizes.spacingSmall),
 
-                  /// Price Tag
+                  
                   Text(
                     "\$${product.price.toStringAsFixed(2)}",
                     style: AppTextStyles.price,

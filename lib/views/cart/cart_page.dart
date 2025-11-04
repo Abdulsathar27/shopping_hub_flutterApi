@@ -51,7 +51,7 @@ class CartPage extends StatelessWidget {
                       ),
                       child: Row(
                         children: [
-                          /// Product Image
+                          
                           ClipRRect(
                             borderRadius: BorderRadius.circular(
                               Sizes.radiusSmall,
@@ -65,7 +65,7 @@ class CartPage extends StatelessWidget {
                           ),
                           const SizedBox(width: Sizes.spacingMedium),
 
-                          /// Title & Price
+                          
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,7 +85,7 @@ class CartPage extends StatelessWidget {
                             ),
                           ),
 
-                          /// Quantity Controls
+                          
                           Row(
                             children: [
                               IconButton(
@@ -123,7 +123,7 @@ class CartPage extends StatelessWidget {
                 ),
               ),
 
-              /// Total + Checkout
+             
               Container(
                 padding: const EdgeInsets.all(Sizes.paddingLarge),
                 width: double.infinity,

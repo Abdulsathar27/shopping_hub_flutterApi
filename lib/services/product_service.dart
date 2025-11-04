@@ -8,7 +8,6 @@ import '../core/utils/logger.dart';
 class ProductService {
   final DioClient dioClient = DioClient();
 
-  /// Fetch all products from FakeStore API
   Future<List<Product>> fetchProducts() async {
     try {
       final response = await dioClient.dio.get(ApiEndpoints.products);
@@ -21,7 +20,7 @@ class ProductService {
     }
   }
 
-  /// Add product
+  
   Future<Product> addProduct(Product product) async {
     try {
       final response = await dioClient.dio.post(
@@ -34,7 +33,7 @@ class ProductService {
     }
   }
 
-  /// Update product
+  
   Future<Product> updateProduct(int id, Product product) async {
     try {
       final response = await dioClient.dio.put(
@@ -47,7 +46,7 @@ class ProductService {
     }
   }
 
-  /// Delete product
+  
   Future<void> deleteProduct(int id) async {
     try {
       await dioClient.dio.delete("${ApiEndpoints.productById}$id");

@@ -22,7 +22,7 @@ class ProductDetailView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /// Product Image with Hero Animation
+          
             Hero(
               tag: "product_image_${product.id}",
               child: ClipRRect(
@@ -37,11 +37,11 @@ class ProductDetailView extends StatelessWidget {
             ),
             const SizedBox(height: Sizes.spacingLarge),
 
-            /// Title
+           
             Text(product.title, style: AppTextStyles.heading2),
             const SizedBox(height: Sizes.spacingMedium),
 
-            /// Price + Rating Row
+            
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -60,7 +60,7 @@ class ProductDetailView extends StatelessWidget {
             ),
             const SizedBox(height: Sizes.spacingLarge),
 
-            /// Description
+          
             Text(
               product.description,
               style: AppTextStyles.body.copyWith(height: 1.4),
@@ -68,7 +68,7 @@ class ProductDetailView extends StatelessWidget {
 
             const SizedBox(height: Sizes.spacingLarge * 2),
 
-            /// Add to Cart Button
+           
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(

@@ -48,10 +48,10 @@ class HomeViewState extends State<HomeView> {
         centerTitle: true,
       ),
 
-      /// ✅ Screen changes here
+     
       body: screens[currentIndex],
 
-      /// ✅ Custom widget handling bottom navigation
+      
       bottomNavigationBar: HomeBottomNav(
         currentIndex: currentIndex,
         onTabSelected: onTabChanged,

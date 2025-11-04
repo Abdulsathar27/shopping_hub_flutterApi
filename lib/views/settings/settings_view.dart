@@ -19,7 +19,7 @@ class SettingsView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /// Profile email (fetched from SharedPreferences)
+            
             Text(
               "Logged in as:",
               style: AppTextStyles.subtitle,
@@ -31,7 +31,7 @@ class SettingsView extends StatelessWidget {
             ),
             const SizedBox(height: Sizes.spacingLarge * 2),
 
-            /// Logout button
+            
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(

@@ -25,7 +25,7 @@ class Product {
       description: json["description"] ?? "No Description",
 
       image: json["image"] ??
-          (json["thumbnail"] ?? ""), // DummyJSON uses "thumbnail"
+          (json["thumbnail"] ?? ""), 
 
       price: json["price"] is num
           ? (json["price"] as num).toDouble()
@@ -37,10 +37,10 @@ class Product {
 
   static double _parseRating(Map<String, dynamic> json) {
     if (json["rating"] is Map && json["rating"]["rate"] is num) {
-      return (json["rating"]["rate"] as num).toDouble(); // FakeStore
+      return (json["rating"]["rate"] as num).toDouble(); 
     }
     if (json["rating"] is num) {
-      return (json["rating"] as num).toDouble(); // DummyJSON
+      return (json["rating"] as num).toDouble(); 
     }
     return 0.0;
   }

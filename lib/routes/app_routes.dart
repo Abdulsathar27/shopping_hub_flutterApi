@@ -30,14 +30,14 @@ class AppRoutes {
             builder: (_) => ProductDetailView(product: args),
           );
         }
-        return _errorRoute("Invalid product detail arguments");
+        return errorRoute("Invalid product detail arguments");
 
       default:
-        return _errorRoute("Route not found");
+        return errorRoute("Route not found");
     }
   }
 
-  static Route<dynamic> _errorRoute(String message) {
+  static Route<dynamic> errorRoute(String message) {
     return MaterialPageRoute(
       builder: (_) => Scaffold(
         appBar: AppBar(title: const Text("Route Error")),
