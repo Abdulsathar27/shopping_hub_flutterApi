@@ -31,11 +31,11 @@ class Product {
           ? (json["price"] as num).toDouble()
           : double.tryParse(json["price"].toString()) ?? 0.0,
 
-      rating: _parseRating(json),
+      rating: parseRating(json),
     );
   }
 
-  static double _parseRating(Map<String, dynamic> json) {
+  static double parseRating(Map<String, dynamic> json) {
     if (json["rating"] is Map && json["rating"]["rate"] is num) {
       return (json["rating"]["rate"] as num).toDouble(); 
     }

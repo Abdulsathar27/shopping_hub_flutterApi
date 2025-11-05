@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:dio/dio.dart';
 import '../models/product.dart';
-import '../core/network/dio_client.dart';
-import '../core/constants/api_constants.dart';
-import '../core/network/api_endpoints.dart';
+import '../services/smartphone_service.dart';
 import '../core/utils/logger.dart';
 
 class SmartphoneProvider with ChangeNotifier {
-  final DioClient dioClient = DioClient();
+  final SmartphoneService _smartphoneService = SmartphoneService();
 
   List<Product> smartphones = [];
   bool isLoading = false;
@@ -17,29 +14,17 @@ class SmartphoneProvider with ChangeNotifier {
   bool get isLoadings => isLoading;
   String? get errorMessages => errorMessage;
 
-
   Future<void> loadSmartphones() async {
     isLoading = true;
     errorMessage = null;
     notifyListeners();
 
     try {
-      
-      dioClient.dio.options.baseUrl = ApiConstants.baseDummyJson;
-
-      final response =
-          await dioClient.dio.get(ApiEndpoints.smartphones);
-
-      final List data = response.data["products"];
-      smartphones = data.map((json) => Product.fromJson(json)).toList();
-
+      smartphones = await _smartphoneService.fetchSmartphones();
       AppLogger.success("Smartphones loaded successfully");
-    } on DioException catch (e) {
-      errorMessage = dioClient.handleError(e).toString();
-      AppLogger.error("Failed loading smartphones", error: errorMessage);
     } catch (e) {
-      errorMessage = "Unexpected error: $e";
-      AppLogger.error("Unexpected failure", error: e);
+      errorMessage = e.toString();
+      AppLogger.error("Failed to load smartphones", error: errorMessage);
     }
 
     isLoading = false;
